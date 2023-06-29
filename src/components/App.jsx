@@ -14,7 +14,7 @@ export class App extends Component {
     images: [],
     showBtn: false,
     loading: false,
-    photosLoaded: false,
+    // photosLoaded: false,
   };
 
   async componentDidUpdate(_, prevState) {
