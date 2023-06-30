@@ -3,7 +3,7 @@ import { StyledGallery } from './ImageGallery.styled';
 import { ImageGalleryItem } from '../ImageGalleryItem/ImageGalleryItem';
 import PropTypes from 'prop-types';
 
-export const ImageGallery = ({ images = [] }) => {
+export const ImageGallery = ({ images }) => {
   return (
     <StyledGallery>
       {images.map(image => (
@@ -13,7 +13,7 @@ export const ImageGallery = ({ images = [] }) => {
   );
 };
 
-ImageGallery.propType = {
+ImageGallery.propTypes = {
   images: PropTypes.arrayOf(
     PropTypes.shape({
       webformatURL: PropTypes.string.isRequired,

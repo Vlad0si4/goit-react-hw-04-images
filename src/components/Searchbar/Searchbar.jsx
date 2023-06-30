@@ -1,42 +1,36 @@
-import { Component } from 'react';
+import { useState } from 'react';
 import { Btn, Form, Header, Input } from './Searchbar.styled';
 import PropTypes from 'prop-types';
 
-export class Searchbar extends Component {
-  state = {
-    value: '',
-  };
+export const Searchbar = ({ onSubmit }) => {
+  const [value, setValue] = useState('');
 
-  handleInputChange = ({ target }) => {
-    this.setState({ value: target.value });
+  const handleInputChange = ({ target }) => {
+    setValue(target.value);
   };
-  handleSubmit = e => {
-    const { value } = this.state;
+  const handleSubmit = e => {
     e.preventDefault();
-    this.props.onSubmit(value);
-    this.setState({ value: '' });
+    onSubmit(value);
+    setValue('');
   };
 
-  render() {
-    const { value } = this.state;
-    return (
-      <Header>
-        <Form onSubmit={this.handleSubmit}>
-          <Btn>Search</Btn>
+  return (
+    <Header>
+      <Form onSubmit={handleSubmit}>
+        <Btn>Search</Btn>
 
-          <Input
-            onChange={this.handleInputChange}
-            value={value}
-            type="text"
-            autocomplete="off"
-            // autofocus
-            placeholder="Search images and photos"
-          />
-        </Form>
-      </Header>
-    );
-  }
-}
+        <Input
+          onChange={handleInputChange}
+          value={value}
+          type="text"
+          autocomplete="off"
+          // autofocus
+          placeholder="Search images and photos"
+        />
+      </Form>
+    </Header>
+  );
+};
 
 Searchbar.propTypes = {
   value: PropTypes.string,
